@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".viewModels.ScoreTracker"
-    android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <LinearLayout
-        android:gravity="center"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="match_parent"
+        tools:context=".viewModels.ScoreTracker"
+        android:orientation="vertical">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
             <TextView
                 android:id="@+id/score"
                 android:textColor="@color/black"
@@ -19,33 +22,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="bottom"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/remove"
+                android:textColor="@color/white"
+                android:text="Remove"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/red"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+            <Button
+                android:id="@+id/add"
+                android:textColor="@color/white"
+                android:text="Add"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/green"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 
-    <LinearLayout
-        android:gravity="bottom"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/remove"
-            android:textColor="@color/white"
-            android:text="Remove"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/red"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"/>
-        <Button
-            android:id="@+id/add"
-            android:textColor="@color/white"
-            android:text="Add"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/green"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"/>
-    </LinearLayout>
+</layout>
 
-
-</LinearLayout>
