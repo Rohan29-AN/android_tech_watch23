@@ -43,19 +43,19 @@
                                 android:layout_height="40dp"/>
                             <EditText
                                 android:layout_margin="5dp"
-                                android:hint="Weather"
+                                android:hint="Watcher"
                                 android:layout_weight="1"
-                                android:id="@+id/weather"
+                                android:id="@+id/watcher"
                                 android:layout_width="0dp"
                                 android:layout_height="40dp"/>
                     </LinearLayout>
 
                 <EditText
                     android:layout_marginTop="10dp"
-                    android:id="@+id/description"
+                    android:id="@+id/issues"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:hint="Description"/>
+                    android:hint="Issues"/>
 
             </LinearLayout>
 
