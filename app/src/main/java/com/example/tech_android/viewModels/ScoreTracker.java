@@ -35,7 +35,7 @@ public class ScoreTracker extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ++score;
-                binding.score.setText(score+"");
+                binding.score.setText(String.valueOf(score));
             }
         });
 
@@ -43,7 +43,7 @@ public class ScoreTracker extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 score=(score-1) >0 ? (score-1):0;
-                binding.score.setText(score+"");
+                binding.score.setText(String.valueOf(score));
             }
         });
     }
