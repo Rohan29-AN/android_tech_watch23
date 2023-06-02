@@ -26,6 +26,43 @@ public class ProjectModel {
     public String _LANGUAGE;
 
 
+    public int get_ID() {
+        return _ID;
+    }
 
+    public void set_ID(int _ID) {
+        this._ID = _ID;
+    }
 
+    public int get_WATCHER() {
+        return _WATCHER;
+    }
+
+    public void set_WATCHER(int _WATCHER) {
+        this._WATCHER = _WATCHER;
+    }
+
+    public int get_ISSUES() {
+        return _ISSUES;
+    }
+
+    public void set_ISSUES(int _ISSUES) {
+        this._ISSUES = _ISSUES;
+    }
+
+    public String get_TITLE() {
+        return _TITLE;
+    }
+
+    public void set_TITLE(String _TITLE) {
+        this._TITLE = _TITLE;
+    }
+
+    public String get_LANGUAGE() {
+        return _LANGUAGE;
+    }
+
+    public void set_LANGUAGE(String _LANGUAGE) {
+        this._LANGUAGE = _LANGUAGE;
+    }
 }
