@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import com.example.tech_android.Entity.ProjectModel;
+import com.example.tech_android.entity.ProjectModel;
 import com.example.tech_android.repository.AppRepo;
 
 import java.util.List;

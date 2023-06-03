@@ -6,8 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.tech_android.DAO.ProjectDAO;
-import com.example.tech_android.Entity.ProjectModel;
+import com.example.tech_android.dao.ProjectDAO;
+import com.example.tech_android.entity.ProjectModel;
 
 
 @Database(entities = {ProjectModel.class},exportSchema = false,version = 1)

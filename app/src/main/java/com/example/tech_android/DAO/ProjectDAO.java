@@ -1,4 +1,4 @@
-package com.example.tech_android.DAO;
+package com.example.tech_android.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.tech_android.Entity.ProjectModel;
+import com.example.tech_android.entity.ProjectModel;
 
 import java.util.List;
 
@@ -36,12 +36,12 @@ public interface ProjectDAO {
 
 
     @Delete
-    List<Integer> deleteListOfProject(List<ProjectModel> projectModels);
+    public void deleteListOfProject(List<ProjectModel> projectModels);
 
     @Update
-    List<Integer> updateListOfProject(List<ProjectModel> projectModels);
+    public int updateListOfProject(List<ProjectModel> projectModels);
 
     @Insert
-    List<Integer> insertListOfProject(List<ProjectModel> projectModels);
+    public long[] insertListOfProject(List<ProjectModel> projectModels);
 
 }

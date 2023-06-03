@@ -2,7 +2,7 @@ package com.example.tech_android.repository;
 
 import android.content.Context;
 
-import com.example.tech_android.Entity.ProjectModel;
+import com.example.tech_android.entity.ProjectModel;
 import com.example.tech_android.database.AppDatabase;
 
 import java.util.List;
