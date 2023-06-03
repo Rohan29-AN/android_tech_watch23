@@ -25,6 +25,16 @@ public abstract class AppDatabase  extends RoomDatabase {
             if(instance==null){
                 synchronized (LOCK){
                     if(instance==null){
+
+
+                        /***To enable access to the database in the main thread, there are several solutions:
+                         * 1- We can append this code box: allowMainThreadQueries ()
+                         * 2-We can use liveData.
+                         * 3-We can make future callable
+                         * ....
+                         * ***/
+
+
                         instance= Room.databaseBuilder(context.getApplicationContext(),AppDatabase.class,
                                 DATABASE_NAME).build();
                     }

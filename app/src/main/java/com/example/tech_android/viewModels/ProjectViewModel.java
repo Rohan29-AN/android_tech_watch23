@@ -9,6 +9,7 @@ import com.example.tech_android.entity.ProjectModel;
 import com.example.tech_android.repository.AppRepo;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ProjectViewModel extends AndroidViewModel {
     private AppRepo repo;
@@ -34,7 +35,7 @@ public class ProjectViewModel extends AndroidViewModel {
         this.repo.deleteProject(projectModel);
     }
 
-    public List<ProjectModel> getListProject(){
+    public List<ProjectModel> getListProject() throws ExecutionException, InterruptedException {
         return this.repo.ListProject();
     }
 }

@@ -6,8 +6,13 @@ import com.example.tech_android.entity.ProjectModel;
 import com.example.tech_android.database.AppDatabase;
 
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+import javax.security.auth.callback.Callback;
 
 public class AppRepo {
     private AppDatabase appDatabase;
@@ -54,7 +59,20 @@ public class AppRepo {
         });
     }
 
-    public List<ProjectModel> ListProject(){
-        return appDatabase.projectDAO().getProjectFuture();
+    public List<ProjectModel> ListProject() throws ExecutionException, InterruptedException {
+
+
+        //Method no 3
+
+        Callable<List<ProjectModel>> callable=new Callable<List<ProjectModel>>() {
+            @Override
+            public List<ProjectModel> call() throws Exception {
+                return appDatabase.projectDAO().getProjectFuture();
+            }
+        };
+
+        Future<List<ProjectModel>> future=Executors.newSingleThreadExecutor().submit(callable);
+        return  future.get();
+        //return appDatabase.projectDAO().getProjectFuture();
     }
 }

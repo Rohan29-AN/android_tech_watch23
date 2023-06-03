@@ -48,4 +48,10 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     public int getItemCount() {
         return (_listProject!=null)?_listProject.size():0;
     }
+
+
+    public void setProjects(List<ProjectModel> projects){
+        this._listProject=projects;
+        notifyDataSetChanged();
+    }
 }
