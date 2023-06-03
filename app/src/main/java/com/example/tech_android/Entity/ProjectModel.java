@@ -1,12 +1,15 @@
 package com.example.tech_android.entity;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName="project")
-public class ProjectModel {
+public class ProjectModel implements Parcelable {
 
     //id,title,language,watcher,issues
     @PrimaryKey(autoGenerate = true)
@@ -26,7 +29,7 @@ public class ProjectModel {
     public String _LANGUAGE;
 
 
-    public int get_ID() {
+    /*public int get_ID() {
         return _ID;
     }
 
@@ -64,5 +67,43 @@ public class ProjectModel {
 
     public void set_LANGUAGE(String _LANGUAGE) {
         this._LANGUAGE = _LANGUAGE;
+    }*/
+
+    public ProjectModel(){
+
     }
+
+    protected ProjectModel(Parcel in) {
+        _ID = in.readInt();
+        _WATCHER = in.readInt();
+        _ISSUES = in.readInt();
+        _TITLE = in.readString();
+        _LANGUAGE = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(_ID);
+        dest.writeInt(_WATCHER);
+        dest.writeInt(_ISSUES);
+        dest.writeString(_TITLE);
+        dest.writeString(_LANGUAGE);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ProjectModel> CREATOR = new Creator<ProjectModel>() {
+        @Override
+        public ProjectModel createFromParcel(Parcel in) {
+            return new ProjectModel(in);
+        }
+
+        @Override
+        public ProjectModel[] newArray(int size) {
+            return new ProjectModel[size];
+        }
+    };
 }

@@ -1,7 +1,6 @@
 package com.example.tech_android.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,11 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tech_android.entity.ProjectModel;
 import com.example.tech_android.R;
 import com.example.tech_android.databinding.ItemProjectBinding;
+import com.example.tech_android.event.OnClickItemInterface;
 
 import java.util.List;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder> {
     List<ProjectModel> _listProject;
+    OnClickItemInterface onClickItemInterface;
+
+
+    public ProjectAdapter(OnClickItemInterface onClickItemInterface) {
+        this.onClickItemInterface = onClickItemInterface;
+    }
 
     public  class ViewHolder extends RecyclerView.ViewHolder{
         ItemProjectBinding binding;
@@ -41,6 +47,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             if(_listProject!=null){
                 ProjectModel projectModel=_listProject.get(position);
                 holder.binding.setProjectModel(projectModel);
+                holder.binding.setListener(this.onClickItemInterface);
             }
     }
 

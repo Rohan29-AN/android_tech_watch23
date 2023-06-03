@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.tech_android.R;
@@ -24,6 +25,8 @@ public class add_project extends AppCompatActivity {
     private int _issues,_watcher;
     private String[] languages={"JAVA","SWIFT","DART","C++","C","C#"};
     private ProjectViewModel projectViewModel;
+    private ProjectModel projectModel;
+    private boolean isEdit=false;
 
 
     @Override
@@ -49,6 +52,19 @@ public class add_project extends AppCompatActivity {
         //INITIALIZE VIEW MODEL
         this.projectViewModel= new ViewModelProvider(this).get(ProjectViewModel.class);
 
+
+        //RETRIEVE DATA FROM THE PREVIOUS ACTIVITY
+       if(getIntent().hasExtra("project")){
+            this.projectModel=getIntent().getParcelableExtra("project");
+            binding.title.setText(this.projectModel._TITLE);
+            binding.watcher.setText(String.valueOf(this.projectModel._WATCHER));
+            binding.issues.setText(String.valueOf(this.projectModel._ISSUES));
+            this.isEdit=true;
+
+           int selectedIndex = getPositionByValue(binding.language, this.projectModel._LANGUAGE);
+           binding.language.setSelection(selectedIndex);
+       }
+
     }
 
     private void  initSpinner(String[] data){
@@ -66,10 +82,10 @@ public class add_project extends AppCompatActivity {
                     _watcher=!TextUtils.isEmpty(binding.watcher.getText().toString())?Integer.parseInt(binding.watcher.getText().toString()):-1;
                     _issues=!TextUtils.isEmpty(binding.issues.getText().toString())?Integer.parseInt(binding.issues.getText().toString()):-1;
 
-                    System.out.println("TITLE = "+_title);
-                    System.out.println("WATCHER = "+_watcher);
-                    System.out.println("ISSUES = "+_issues);
-                    System.out.println("LANGUAGE = "+_languageSelected);
+//                    System.out.println("TITLE = "+_title);
+//                    System.out.println("WATCHER = "+_watcher);
+//                    System.out.println("ISSUES = "+_issues);
+//                    System.out.println("LANGUAGE = "+_languageSelected);
 
                     if(_title.length()==0 || _watcher==-1 ||
                            _issues==-1){
@@ -77,15 +93,27 @@ public class add_project extends AppCompatActivity {
                         return;
                     }
 
-                    ProjectModel projectModel=new ProjectModel();
-                    projectModel._TITLE=_title;
-                    projectModel._LANGUAGE=_languageSelected;
-                    projectModel._WATCHER=_watcher;
-                    projectModel._ISSUES=_issues;
+                    if(!isEdit){
+                        projectModel=new ProjectModel();
+                        projectModel._TITLE=_title;
+                        projectModel._LANGUAGE=_languageSelected;
+                        projectModel._WATCHER=_watcher;
+                        projectModel._ISSUES=_issues;
+                        projectViewModel.insertProject(projectModel);
+                        Toast.makeText(add_project.this, "Insertion OK", Toast.LENGTH_SHORT).show();
 
-                    projectViewModel.insertProject(projectModel);
-                    Toast.makeText(add_project.this, "Insertion OK", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        projectModel._TITLE=_title;
+                        projectModel._LANGUAGE=_languageSelected;
+                        projectModel._WATCHER=_watcher;
+                        projectModel._ISSUES=_issues;
+                        projectViewModel.updateProject(projectModel);
+                        Toast.makeText(add_project.this, "Update OK", Toast.LENGTH_SHORT).show();
+
+                    }
                     finish();
+
                 }
             });
 
@@ -94,13 +122,13 @@ public class add_project extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     _languageSelected=adapterView.getItemAtPosition(i).toString();
-                    Toast.makeText(add_project.this, "Language = "+_languageSelected, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(add_project.this, "Language = "+_languageSelected, Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
                     _languageSelected=adapterView.getItemAtPosition(0).toString();
-                    Toast.makeText(add_project.this, "Default: "+_languageSelected, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(add_project.this, "Default: "+_languageSelected, Toast.LENGTH_SHORT).show();
                 }
             });
     }
@@ -109,5 +137,18 @@ public class add_project extends AppCompatActivity {
     public void onBackPressed() {
       //  super.onBackPressed();
         finish();
+    }
+
+    private int getPositionByValue(Spinner spinner, String value) {
+        ArrayAdapter<String> adapter = (ArrayAdapter<String>) spinner.getAdapter();
+        int count = adapter.getCount();
+
+        for (int i = 0; i < count; i++) {
+            if (adapter.getItem(i).equals(value)) {
+                return i;
+            }
+        }
+
+        return 0; // Default position if value not found
     }
 }
