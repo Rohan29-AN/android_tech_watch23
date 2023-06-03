@@ -9,17 +9,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.tech_android.R;
 import com.example.tech_android.adapter.ProjectAdapter;
 import com.example.tech_android.databinding.ActivityListProjectBinding;
 import com.example.tech_android.entity.ProjectModel;
+import com.example.tech_android.event.OnClickItemInterface;
 import com.example.tech_android.viewModels.ProjectViewModel;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-public class list_project extends AppCompatActivity {
+public class list_project extends AppCompatActivity implements OnClickItemInterface {
     private ActivityListProjectBinding binding;
     private ProjectViewModel projectViewModel;
     private ProjectAdapter projectAdapter;
@@ -57,7 +58,7 @@ public class list_project extends AppCompatActivity {
         this.binding.listProject.setLayoutManager(new LinearLayoutManager(this));
 
 
-        this.projectAdapter=new ProjectAdapter();
+        this.projectAdapter=new ProjectAdapter(this);
 
         this.binding.listProject.setAdapter(this.projectAdapter);
 
@@ -107,4 +108,17 @@ public class list_project extends AppCompatActivity {
             });
     }
 
+    @Override
+    public void onClickItem(ProjectModel projectModel, boolean isEdit) {
+        if(isEdit){
+            //UPDATE
+            Intent intent=new Intent(this,add_project.class);
+            intent.putExtra("project",projectModel);
+            startActivity(intent);
+        }
+        else{
+            //DELETE
+            this.projectViewModel.deleteProject(projectModel);
+        }
+    }
 }
