@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.example.tech_android.entity.ProjectModel;
 import com.example.tech_android.repository.AppRepo;
@@ -17,7 +18,6 @@ public class ProjectViewModel extends AndroidViewModel {
 
     public ProjectViewModel(@NonNull Application application) {
         super(application);
-
         this.repo=  new AppRepo(application);
     }
 
@@ -35,7 +35,15 @@ public class ProjectViewModel extends AndroidViewModel {
         this.repo.deleteProject(projectModel);
     }
 
-    public List<ProjectModel> getListProject() throws ExecutionException, InterruptedException {
-        return this.repo.ListProject();
+
+    //FUTURE
+    public List<ProjectModel> getListProjectFuture() throws ExecutionException, InterruptedException {
+        return this.repo.ListProjectFuture();
+    }
+
+
+
+    public LiveData<List<ProjectModel>> getListProjectLive(){
+        return this.repo.ListProjectLive();
     }
 }

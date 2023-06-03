@@ -2,6 +2,8 @@ package com.example.tech_android.repository;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.tech_android.entity.ProjectModel;
 import com.example.tech_android.database.AppDatabase;
 
@@ -17,6 +19,10 @@ import javax.security.auth.callback.Callback;
 public class AppRepo {
     private AppDatabase appDatabase;
     private Executor executor= Executors.newSingleThreadExecutor();
+
+
+    //LIVE DATA
+
 
     public AppRepo(Context context) {
         appDatabase=AppDatabase.getInstance(context);
@@ -59,7 +65,7 @@ public class AppRepo {
         });
     }
 
-    public List<ProjectModel> ListProject() throws ExecutionException, InterruptedException {
+    public List<ProjectModel> ListProjectFuture() throws ExecutionException, InterruptedException {
 
 
         //Method no 3
@@ -74,5 +80,11 @@ public class AppRepo {
         Future<List<ProjectModel>> future=Executors.newSingleThreadExecutor().submit(callable);
         return  future.get();
         //return appDatabase.projectDAO().getProjectFuture();
+    }
+
+
+    //Get ListProject using LiveData
+    public LiveData<List<ProjectModel>> ListProjectLive(){
+        return appDatabase.projectDAO().getAllProjectLive();
     }
 }
