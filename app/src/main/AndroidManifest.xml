@@ -8,20 +8,19 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_pho3nix"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_pho3nix_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tech_android"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.login"
+            android:name=".ph03nixc0d3rs.view.splash"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.list_project"
+            android:name=".ph03nixc0d3rs.view.login"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -38,21 +37,28 @@
 
         </activity>
         <activity
-            android:name=".view.add_project"
+            android:name=".ph03nixc0d3rs.view.list_project"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ph03nixc0d3rs.view.add_project"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".viewModels.ScoreTracker"
+            android:name=".ph03nixc0d3rs.viewModels.ScoreTracker"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ph03nixc0d3rs.view.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

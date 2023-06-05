@@ -3,11 +3,11 @@
     <data>
         <variable
             name="projectModel"
-            type="com.example.tech_android.entity.ProjectModel" />
+            type="com.ph03nixc0d3rs.ph03nixc0d3rs.entity.ProjectModel" />
 
         <variable
             name="listener"
-            type="com.example.tech_android.event.OnClickItemInterface" />
+            type="com.ph03nixc0d3rs.ph03nixc0d3rs.event.OnClickItemInterface" />
     </data>
 
 

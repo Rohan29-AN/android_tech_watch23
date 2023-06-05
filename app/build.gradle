@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.tech_android'
+    namespace 'com.ph03nixc0d3rs'
     compileSdk 33
 
     dataBinding{
@@ -12,7 +12,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.example.tech_android"
+        applicationId "com.ph03nixc0d3rs.techWatch"
         minSdk 21
         targetSdk 33
         versionCode 1
