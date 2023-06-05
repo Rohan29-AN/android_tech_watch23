@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.login">
+                <TextView
+                    android:textColor="#014D24"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="V-RETRO"
+                    android:textSize="50dp"
+                    android:textAlignment="center"/>
+        
+            <LinearLayout
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@color/black"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/email"
+                    android:textColorHint="#014D24"
+                    android:textColor="#014D24"
+                    android:hint="Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_marginTop="20dp"
+                    android:textColorHint="#014D24"
+                    android:textColor="#014D24"
+                    android:hint="Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:paddingLeft="10dp"/>
+
+                <TextView
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="30dp"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"/>
+                
+                <Button
+                    android:id="@+id/login"
+                    android:textSize="20dp"
+                    android:text="LOGIN"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:backgroundTint="#014D24"/>
+
+            </LinearLayout>
+    </LinearLayout>
+
+</layout>
