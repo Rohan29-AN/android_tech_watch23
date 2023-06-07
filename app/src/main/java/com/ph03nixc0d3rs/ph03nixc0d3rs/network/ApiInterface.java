@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -35,6 +36,13 @@ public interface ApiInterface {
     //GET WITH PARAMS
     @GET("/api/getUser/{id}")
     Call<Response> apiGetWithParams(@Path("id") int id);
+
+    //QUERY PARAMETERS IN URL
+   // @GET("/api/getUserList?sort=desc")
+   // This query is equivalent to this
+
+    @GET("/api/getUserList2")
+    Call<Response> apiGetWithQueryinParams(@Query("sort") String sort);
 
 
 
