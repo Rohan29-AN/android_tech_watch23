@@ -5,10 +5,12 @@ import com.ph03nixc0d3rs.ph03nixc0d3rs.models.APIResponse;
 import com.ph03nixc0d3rs.ph03nixc0d3rs.models.LoginInput;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
 
@@ -29,6 +31,11 @@ public interface ApiInterface {
     })
     @GET('/api/test')
     Call<Response> apiWithHeader();*/
+
+    //GET WITH PARAMS
+    @GET("/api/getUser/{id}")
+    Call<Response> apiGetWithParams(@Path("id") int id);
+
 
 
 
